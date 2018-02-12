@@ -1,0 +1,55 @@
+html
+  head
+    include _common_head.pug
+    script(src="https://unpkg.com/vue@2.5.13/dist/vue.runtime.min.js")
+  body
+    #app
+
+    <script>
+      :babel
+        new Vue({
+          el: '#app',
+
+          data () {
+            return {
+              jsxValue: `I am one app`
+            }
+          },
+
+          computed: {
+            testStyle () {
+              return {
+                color: 'red'
+              }
+            },
+
+            testClass () {
+              return ['test-class']
+            },
+          },
+
+          render () {
+            return (
+              <div class="wrapper">
+                <p>
+                  {this.jsxValue}
+                </p>
+
+
+                <div>
+                  <input type="checkbox" disabled={true} /> &nbsp; 禁用
+                  <br />
+                  <input type="checkbox" disabled={false} /> &nbsp; 未禁用
+                </div>
+
+                <div style={this.testStyle}>
+                  testStyle, view style in devTools
+                </div>
+                <div class={this.testClass}>
+                  testClass, view class name in devTools
+                </div>
+              </div>
+            );
+          }
+        })
+    </script>

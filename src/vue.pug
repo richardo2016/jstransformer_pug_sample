@@ -1,0 +1,50 @@
+html
+  head
+    include _common_head.pug
+    script(src="https://unpkg.com/vue@2.5.13/dist/vue.min.js")
+  body
+    #app
+
+    script(type="text/x-template", id="vue-component-tpl")
+      div
+        p
+          | {{msg}}
+        div
+          input(type="checkbox", :disabled="true")
+          | &nbsp; 禁用
+
+          br
+
+          input(type="checkbox", :disabled="false")
+          | &nbsp; 非禁用
+
+        div(:style="testStyle") testStyle, view style in devTools
+        div(:class="testClass") testClass, view class name in devTools
+
+    <script>
+      :babel
+        if (typeof Vue !== 'undefined') {
+          new Vue({
+            el: '#app',
+            template: '#vue-component-tpl',
+
+            data () {
+              return {
+                msg: `I am one app`
+              }
+            },
+
+            computed: {
+              testStyle () {
+                return {
+                  color: 'red'
+                }
+              },
+
+              testClass () {
+                return ['test-class']
+              },
+            }
+          })
+        }
+    </script>

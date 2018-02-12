@@ -1,0 +1,13 @@
+html
+  head
+    include _common_head.pug
+  body
+    #app
+
+    <script>
+      :babel
+        const appEl = document.getElementById('app')
+        console.log('appEl', appEl)
+
+        appEl.innerText = `I am one app`
+    </script>
